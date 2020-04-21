@@ -22,7 +22,7 @@ def get_mac_address(ip):
     answered_list[0][1].hwsrc
     
     
-def arp_posioning(target_ip, poisoned_ip):
+def arp_poisoning(target_ip, poisoned_ip):
     # Get the target's mac address in function above.
     target_mac = get_mac_address(target_ip)
 
