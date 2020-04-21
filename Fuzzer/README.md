@@ -1,19 +1,19 @@
 # Fuzzer
 I made this fuzzer about 2 years ago and I am in the process of improving it.
 
-# Description and Deliverables
+## Description and Deliverables
 Hunting for bugs is a common task for all programmers, but especially those concerned about cybersecurity. While bugs may be a nuisance to typical users (i.e., people get annoyed when programs crash or don't behave as expected), bugs are a vital resource for malicious actors. Finding bugs in a program is the first step towards isolating exploitable bugs that can be leveraged for attacks against that program.
 
 A fuzzer is a program that tries to find bugs in other programs. This fuzzer will take two inputs: (1) a program specification in XML format, and (2) the path to the target program. It then repeatedly executes the target program with different command line arguments in an attempt to make the target program crash. It reports which command line inputs caused the target program to crash. In the real world, the developer of the target program would then use this information to find and patch the bugs in their program.
 
 Each of these deliverables is described in greater detail below.
 
-# Background
+## Background
 There are many tools and frameworks that help programmers find bugs. Some, like unit tests, are developed by the programmer, included in source code, and are tightly integrated with a given program. This project was a chance to draw on those test development skills. 
 
 Other bug finding tools are more general, and are designed to help find bugs in any program. Fuzz testing, or simply fuzzing, is a black-box technique for attempting to find bugs in programs. This technique is often implemented in a program called a fuzzer. The goal of a fuzzer is repeatedly execute a target program and attempt to crash it by supplying it with a variety of strange inputs. In other words, the goal of the fuzzer is to find bugs in the target, where the programmer has failed to deal with corner-cases in input handling code. Fuzzing is a black-box technique because it does not depend on the source code of the target. Any program that accepts external input (and almost all do) can be fuzzed.
 
-# Motivating Example
+## Motivating Example
 Let's imagine that someone wrote a very simple, command line calculator app. The calc program works like this:
 
 $ ./calc
@@ -36,7 +36,7 @@ The examples above demonstrate that calc works as expected... when the command l
 
 The idea behind a fuzzer is that it will automatically run a target program, like calc, over and over again with different combinations of command line inputs, to try and trigger bugs and expose them, so they can be fixed.
 
-# Fuzzer Specification and Design
+## Fuzzer Specification and Design
 A command line program named fuzzer that performs model-based checking of other command line programs. 
 
 $ ./fuzzer [path to XML configuration file] [path to the target program]
@@ -62,7 +62,7 @@ Note that fuzzer tried to run calc with many other sets of command line argument
     ./calc A B C D, doesn't crash for the same reason as above
     ./calc 1 A 1, doesn't crash, or print anything, because argument two isn't a valid mathematical operator
 
-# Model Specification
+## Model Specification
 My fuzzer program is able to test a wide variety of command line programs. 
 
 This is where the model comes into play. The fuzzer reads a model, specified in XML, that describes the command line arguments of the target program. The general XML format of models is as follows:
