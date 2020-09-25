@@ -11,3 +11,5 @@ Allows you to change (spoof) the Media Access Control (MAC) Address of your Netw
 My version of netdiscover.
 ### - Secure-Password-Generator: 
 generates a secure, memorable password using the XKCD method.
+### - Clipboard-Logger:
+Logs what is on the clipboard every 5 seconds and after 5 minutes sends the log to the specified export email address.
